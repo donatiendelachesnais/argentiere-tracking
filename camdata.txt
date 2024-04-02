@@ -8,7 +8,7 @@ Camera_environment_name # Name of CamEnv class
 CAM5
 
 GCP_path #Path name where Ground Control Point data can be found
-CAM5.txt
+gcps.txt
 
 DEM_path #Path name where DEM data can be found
 DEM.tif
