@@ -14,7 +14,7 @@ DEM_path #Path name where DEM data can be found
 DEM.tif
 
 image_path #Path name where master image can be found (i.e. calibration image where GCPs have been plotted)
-images/23_07150870.JPG
+23_07150870.JPG
 
 Calibration_path #Path name where camera calibration file can be found
  
