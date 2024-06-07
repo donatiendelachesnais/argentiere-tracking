@@ -17,7 +17,7 @@ image_path #Path name where master image can be found (i.e. calibration image wh
 23_07150870.JPG
 
 Calibration_path #Path name where camera calibration file can be found
- 
+Calib_argentiere.txt
 
 Camera_location #Location of camera in xyz coordinates
 [1011242.816 6545738.756 2850.000]
