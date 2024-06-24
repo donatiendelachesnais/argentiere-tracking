@@ -19,7 +19,8 @@ destination = '../Examples/results/test_velocity1/'
 cameraenvironment = CamEnv('camdata.txt')
 
 #Optimise camera environment to refine camera pose
-cameraenvironment.optimiseCamEnv('YPR')
+cameraenvironment.optimiseCamEnv('YPR',show=True)
+cameraenvironment.optimiseCamEnv('INT',show=True)
 
 #Report camera data and show corrected image
 cameraenvironment.reportCamData()
