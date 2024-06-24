@@ -23,7 +23,7 @@ Camera_location #Location of camera in xyz coordinates
 [1011242.816 6545738.756 2850.000]
 
 Yaw_pitch_roll #Yaw, pitch, roll of camera (estimate yaw viewing angle if YPR is unknown e.g. [180 0 0]) 
-[236 3 5] 
+[-56 3 5] 
 
 Dem_densification #Amount to densify the DEM to permit better mapping of image
 2

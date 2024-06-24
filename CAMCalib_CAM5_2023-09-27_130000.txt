@@ -1,0 +1,31 @@
+                           Australis Bundle Adjustment Results: Camera Parameters
+
+                                        19 March, 2024   08:43:44
+
+Project:  C:\Australis\Project 1.aus
+
+Adjustment: Free-Network
+Number of Points: 1000
+Number of Images: 10
+RMS of Image coords:    1.00 (um)
+
+Results for Camera 1    unknown      Lens 
+
+Sensor Size        Pixel Size (mm)
+  H    7552           0.0049934
+  V    4248           0.0049934
+
+  Camera    Initial      Total          Final        Initial         Final
+ Variable    Value     Adjustment       Value       Std. Error     Std. Error
+    C       50.5116      0.00000       50.5116       1.0e+003         0.0000 (mm)
+   XP       -2.2387      0.00000       -2.2387       1.0e+003         0.0000 (mm)
+   YP        0.2294      0.00000        0.2294       1.0e+003         0.0000 (mm)
+   K1   4.37203e-04   0.000e-000   4.37203e-04       1.0e+003    0.00000e+00
+   K2  -2.53703e-06   0.000e-000  -2.53703e-06       1.0e+003    0.00000e+00
+   K3   4.16042e-09   0.000e-000   4.16042e-09       1.0e+003    0.00000e+00
+   P1   2.41682e-04   0.000e-000   2.41682e-04       1.0e+003    0.00000e+00
+   P2   3.40919e-04   0.000e-000   3.40919e-04       1.0e+003    0.00000e+00
+   B1   5.49382e-04   0.000e-000   5.49382e-04       1.0e+003    0.00000e+00
+   B2   9.44119e-04   0.000e-000   9.44119e-04       1.0e+003    0.00000e+00
+
+Maximum Observational Radial Distance Encountered:      21.633 mm
