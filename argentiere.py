@@ -14,7 +14,7 @@ mask = None
 invmask = None
 imgs = 'Images/*.JPG'
 #Define data output directory
-destination = pwd + r'\\results\\'
+destination = pwd + '/results/'
 
 
 #-----------------------   Create camera object   -----------------------------
@@ -102,8 +102,9 @@ writeHomogFile(hgout, imn, target3)
 #Write points to shp file
 target4 = destination + 'shpfiles/'     #Define file destination
 if not os.path.exists(target4):
-    os.makedirs(target3)                #Create file destination
+    os.makedirs(target4)                #Create file destination
 proj = 32633                            #ESPG:32633 is projection WGS84
+print(xyzvel)
 writeVeloSHP(xyzvel, xyzerr, xyz0, imn, target4, proj)       #Write shapefile
 
   
