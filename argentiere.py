@@ -62,9 +62,9 @@ print('\n\nHOMOGRAPHY CALCULATED')
 vmethod='sparse'                #Method
 vwinsize=(25,25)                #Tracking window size
 bk = 1.0                        #Back-tracking threshold  
-mpt = 50000                     #Maximum number of points to seed
+mpt = 500                       #Maximum number of points to seed
 ql = 0.1                        #Corner quality for seeding
-mdis = 5.0                      #Minimum distance between seeded points
+mdis = 5.0                      #Minimum distance between seeded points mettre 50
 mfeat = 4                       #Minimum number of seeded points to track
 
 #Set up Velocity object
