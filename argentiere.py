@@ -23,14 +23,16 @@ destination = pwd + '/results/'
 cameraenvironment = CamEnv('camdata.txt')
 
 #Optimise camera environment to refine camera pose
-cameraenvironment.optimiseCamEnv('YPR',show=True)
-cameraenvironment.optimiseCamEnv('INT',show=True)
+cameraenvironment.optimiseCamEnv('YPR')
+cameraenvironment.optimiseCamEnv('INT')
 
 #Report camera data and show corrected image
 cameraenvironment.reportCamData()
 cameraenvironment.showGCPs()
 cameraenvironment.showPrincipalPoint()
 cameraenvironment.showResiduals()
+
+print('\nCAMERA ENVIRONMENT OPTIMISED')
 
 
 #----------------------   Calculate homography   ------------------------------
@@ -52,6 +54,7 @@ homog = Homography(imgs, cameraenvironment, invmask, calibFlag=True,
 hgout = homog.calcHomographies([hmethod, [hgmax, hgqual, hgmind], [hgwinsize, 
                                 hgback, hgminf]])
 
+print('\n\nHOMOGRAPHY CALCULATED')
     
 #----------------------   Calculate velocities   ------------------------------
 
@@ -59,9 +62,9 @@ hgout = homog.calcHomographies([hmethod, [hgmax, hgqual, hgmind], [hgwinsize,
 vmethod='sparse'                #Method
 vwinsize=(25,25)                #Tracking window size
 bk = 1.0                        #Back-tracking threshold  
-mpt = 50000                     #Maximum number of points to seed
+mpt = 500                       #Maximum number of points to seed
 ql = 0.1                        #Corner quality for seeding
-mdis = 5.0                      #Minimum distance between seeded points
+mdis = 5.0                      #Minimum distance between seeded points mettre 50
 mfeat = 4                       #Minimum number of seeded points to track
 
 #Set up Velocity object
@@ -80,6 +83,7 @@ uv0=[item[1][1] for item in velocities]
 uv1=[item[1][2] for item in velocities]
 uv1corr=[item[1][3] for item in velocities]
 
+print("\n VELOCITY CALCULATED")
 
 #---------------------------  Export data   -----------------------------------
 
@@ -106,6 +110,8 @@ if not os.path.exists(target4):
 proj = 32633                            #ESPG:32633 is projection WGS84
 print(xyzvel)
 writeVeloSHP(xyzvel, xyzerr, xyz0, imn, target4, proj)       #Write shapefile
+
+print('\nDATA WRITTEN TO FILE')
 
   
 #----------------------------   Plot Results   --------------------------------
