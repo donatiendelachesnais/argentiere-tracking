@@ -23,14 +23,16 @@ destination = pwd + r'\\results\\'
 cameraenvironment = CamEnv('camdata.txt')
 
 #Optimise camera environment to refine camera pose
-cameraenvironment.optimiseCamEnv('YPR',show=True)
-cameraenvironment.optimiseCamEnv('INT',show=True)
+cameraenvironment.optimiseCamEnv('YPR')
+cameraenvironment.optimiseCamEnv('INT')
 
 #Report camera data and show corrected image
 cameraenvironment.reportCamData()
 cameraenvironment.showGCPs()
 cameraenvironment.showPrincipalPoint()
 cameraenvironment.showResiduals()
+
+print('\nCAMERA ENVIRONMENT OPTIMISED')
 
 
 #----------------------   Calculate homography   ------------------------------
@@ -52,6 +54,7 @@ homog = Homography(imgs, cameraenvironment, invmask, calibFlag=True,
 hgout = homog.calcHomographies([hmethod, [hgmax, hgqual, hgmind], [hgwinsize, 
                                 hgback, hgminf]])
 
+print('\n\nHOMOGRAPHY CALCULATED')
     
 #----------------------   Calculate velocities   ------------------------------
 
@@ -80,6 +83,7 @@ uv0=[item[1][1] for item in velocities]
 uv1=[item[1][2] for item in velocities]
 uv1corr=[item[1][3] for item in velocities]
 
+print("\n VELOCITY CALCULATED")
 
 #---------------------------  Export data   -----------------------------------
 
@@ -102,9 +106,11 @@ writeHomogFile(hgout, imn, target3)
 #Write points to shp file
 target4 = destination + 'shpfiles/'     #Define file destination
 if not os.path.exists(target4):
-    os.makedirs(target3)                #Create file destination
+    os.makedirs(target4)                #Create file destination
 proj = 32633                            #ESPG:32633 is projection WGS84
 writeVeloSHP(xyzvel, xyzerr, xyz0, imn, target4, proj)       #Write shapefile
+
+print('\nDATA WRITTEN TO FILE')
 
   
 #----------------------------   Plot Results   --------------------------------
