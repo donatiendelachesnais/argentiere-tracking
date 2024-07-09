@@ -32,6 +32,7 @@ try:
     import FileHandler
     import Utilities 
 except:
+    print('Importing from PyTrx')
     from PyTrx.CamEnv import setProjection, optimiseCamera, computeResidualsXYZ
     from PyTrx.DEM import load_DEM
     from PyTrx import Velocity
