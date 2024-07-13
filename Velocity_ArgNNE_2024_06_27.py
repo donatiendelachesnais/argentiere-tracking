@@ -87,9 +87,9 @@ equal = True                        #Histogram equalisation?
 #Sparse velocity parameters
 vwin = (25,25)                      #Sparse corner matching window size
 vback = 1.0                         #Back-tracking threshold  
-vmax = 50000                        #Maximum number of corners to seed
+vmax = 5000                         #Maximum number of corners to seed (50.000)
 vqual = 0.1                         #Corner quality for seeding
-vmindist = 5.0                      #Minimum distance between points
+vmindist = 10.0                      #Minimum distance between points (5.0)
 
 #Dense velocity parameters
 vgrid = [50,50]                     #Dense matching grid distance

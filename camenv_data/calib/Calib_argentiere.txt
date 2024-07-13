@@ -1,5 +1,5 @@
 RadialDistortion
-[0.5 0. 0. ]                    
+[0. 0. 1. ]                    
 TangentialDistortion
 [0. 0.]
 IntrinsicMatrix
