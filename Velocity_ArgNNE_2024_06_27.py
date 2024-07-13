@@ -25,19 +25,12 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 # #Import PyTrx modules
-try:
-    from CamEnv import setProjection, optimiseCamera, computeResidualsXYZ
-    from DEM import load_DEM
-    import Velocity
-    import FileHandler
-    import Utilities 
-except:
-    print('Importing from PyTrx')
-    from PyTrx.CamEnv import setProjection, optimiseCamera, computeResidualsXYZ
-    from PyTrx.DEM import load_DEM
-    from PyTrx import Velocity
-    from PyTrx import FileHandler
-    from PyTrx import Utilities 
+print('Importing from PyTrx')
+from PyTrx.CamEnv import setProjection, optimiseCamera, computeResidualsXYZ
+from PyTrx.DEM import load_DEM
+from PyTrx import Velocity
+from PyTrx import FileHandler
+from PyTrx import Utilities 
 
  
 #------------------------   Define inputs/outputs   ---------------------------
@@ -47,32 +40,28 @@ print('\nDEFINING DATA INPUTS')
 #Camera name, location (XYZ) and pose (yaw, pitch, roll)
 camname = 'CAM5'
 camloc = np.array([1011242.816, 6545738.756, 2850.000])
-
-#campose = np.array([4.80926, 0.05768, 0.14914]) 
 campose = np.array([-56, 3, 5]) 
 
 #Define image folder and image file type for velocity tracking
 imgFiles = './images/*.JPG'
 
-#Define calibration images and chessboard dimensions (height, width)
+#Define calibration file path
 calibPath = './camenv_data/calib/Calib_argentiere.txt'
 
-#Load DEM from path
-#DEMpath = '../Examples/camenv_data/dem/KR_arcticdem_20140512.tif'        
+#Load DEM from path       
 DEMpath = './camenv_data/dem/DEM.tif'
 
 #Define masks for velocity and homography point generation
 vmaskPath_s = './camenv_data/masks/StableTerrain_mask_image.jpg'
 vmaskPath_s2 = './camenv_data/masks/Cone_mask_image.jpg'
-vmaskPath_d = './camenv_data/masks/Cone_mask_dem.jpg'      
-hmaskPath = './camenv_data/masks/Cone_mask_homography.jpg'    
+vmaskPath_d = './camenv_data/masks/Cone_mask_dem.jpg'
+hmaskPath = './camenv_data/masks/Cone_mask_homography.jpg'
 
 #Define reference image (where GCPs have been defined)
 refimagePath = './camenv_data/refimages/23_07150870.JPG'
 
 #Define GCPs (world coordinates and corresponding image coordinates)
 GCPpath = './camenv_data/gcps/gcps.txt'
-#GCPpath = '../Examples/camenv_data/gcps/KR2_2014_arcticdem20140512.txt'
 
 print('\nDEFINING DATA OUTPUTS')
 
@@ -138,12 +127,12 @@ GCPxyz, GCPuv = FileHandler.readGCPs(GCPpath)
 
 print('\nLOADING CALIBRATION')
 calib_out = FileHandler.readMatrixDistortion(calibPath)
-matrix=np.transpose(calib_out[0])                          
-tancorr = calib_out[1]                                     
-radcorr = calib_out[2]                                      
-focal = [matrix[0,0], matrix[1,1]]                          
-camcen = [matrix[0,2], matrix[1,2]]                         
- 
+matrix = np.transpose(calib_out[0])
+tancorr = calib_out[1]
+radcorr = calib_out[2]
+focal = [matrix[0,0], matrix[1,1]]
+camcen = [matrix[0,2], matrix[1,2]]
+
 
 print('\nLOADING IMAGE FILES')
 imagelist = sorted(glob.glob(imgFiles))
@@ -183,8 +172,8 @@ vmask1 = FileHandler.readMask(im1, vmaskPath_s) # stable terrain mask on image
 vmask2 = FileHandler.readMask(im1, vmaskPath_s2) # cone mask on image
 vmask3 = Velocity.readDEMmask(dem, im1, new_invprojvars, vmaskPath_d) # cone mask on DEM
 
-#print('Defining homography mask')
-#hmask = FileHandler.readMask(None, hmaskPath)
+print('Defining homography mask')
+hmask = FileHandler.readMask(None, hmaskPath)
 
 plt.imshow(vmask1)
 plt.show()
